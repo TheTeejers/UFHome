@@ -41,7 +41,7 @@ class App extends Component {
             Get to where THEY were!
           </p>
           <SearchTryToWork query={this.state.query} handleSearchInput={this.handleSearchInput} onSubmitQuery={this.onSubmitQuery} />
-          <Results sightings={this.state.cities} />
+          {/*<Results sightings={this.state.cities} />*/}
 
         </header>
         {/*<SearchTryToWork />*/}
