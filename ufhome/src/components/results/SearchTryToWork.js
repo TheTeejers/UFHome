@@ -6,14 +6,11 @@ class SearchSightingsApi extends Component {
     super(props);
     this.state = {
       searchCity: '',
-      searchingSkies: true,
+      searchingSkies: true
     }
 
-  this.getSearch = this.getSearch.bind(this);
-  }
-
-  componentDidMount() {
-    this.getSearch();
+    this.getSearch = this.getSearch.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   getSearch(){
@@ -21,19 +18,30 @@ class SearchSightingsApi extends Component {
       searchingSkies: true
     });
     var distance = ((this.refs.distanceseed.value))
-    axios.get(`https://cors-anywhere.herokuapp.com/https://ufo-api.herokuapp.com/api/sightings/location/near?limit=500&location=${this.refs.locationseed.value}&radius=${distance || 500000}`)
+    axios.get(`https://cors-anywhere.herokuapp.com/https://ufo-api.herokuapp.com/api/sightings/location/near?limit=50&location=${this.refs.locationseed.value}&radius=${distance || 500000}`)
     .then((response) => {
-      console.log(response.data.sightings)
-      let newSighting = response.data.sightings
-      this.setState({
-        searchCity: newSighting,
-        searchingSkies: false
-      })
+      console.log('I SHOULD HAVE SEARCH RESULTS');
+      // console.log(response.data);
+      // console.log(response.data.sightings);
+      if (response.data.status == 'ERROR') {
+        alert('Error in fetching data for the location')
+      } else {
+        let newSighting = response.data.sightings
+        this.setState({
+          searchCity: newSighting,
+          searchingSkies: false
+        })
+        // call App function to update App state of search results
+        this.props.onSubmitQuery(newSighting);
+      }
     }).catch((error) => {
       console.log(error)
     });
+  }
 
-
+  handleSubmit(evt) {
+    evt.preventDefault();
+    this.getSearch();
   }
 
   formatCity(sightings) {
@@ -53,11 +61,13 @@ class SearchSightingsApi extends Component {
     return (
       <div className='searchReturn'>
         <h1>{this.state.searchingSkies ? 'Looking at the stars....' : 'HELLO!!!'}</h1>
-        <input type='text' placeholder='City and State' ref='locationseed'
-            onKeyDown={(event) => {if(event.keyCode === 13) this.getSearch()}}/>
-        <input type='text' placeholder='Distance (miles)' ref='distanceseed'
-            onKeyDown={(event) => {if(event.keyCode === 13) this.getSearch()}}/>
-        <button onClick={this.getSearch}>Search the Skies!</button>
+        <form onSubmit={this.handleSubmit}>
+          <input type='text' placeholder='City and State' ref='locationseed'
+              onKeyDown={(event) => {if(event.keyCode === 13) this.getSearch()}}/>
+          <input type='text' placeholder='Distance (miles)' ref='distanceseed'
+              onKeyDown={(event) => {if(event.keyCode === 13) this.getSearch()}}/>
+          <button>Search the Skies Now!</button>
+        </form>
         <div>
           <p>{sightingResults}words</p>
         </div>

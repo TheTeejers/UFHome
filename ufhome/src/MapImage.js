@@ -1,37 +1,24 @@
-import React from 'react';
-import { withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
+import React, { Component } from 'react';
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
-const MapContainer = withGoogleMap(({ sightings, clickInfoBox, loading, favorite }) => {
-    const pinsArray = Object.keys(sightings).map((claim, i) => {
-      return  <Marker
-                key={i}
-                position={{ lat: sightings[claim].latitude , lng: sightings[claim].longitude }}
-                onClick={() => clickInfoBox(claim)}
-                icon={'../../assets/styles/images/et.png'}
-              >
-                {sightings[claim].info === 'true' && (
-                  <InfoWindow onCloseClick={()=> clickInfoBox(claim)}>
-                    <div className='window-div'>
-                      <div>{sightings[claim].summary}</div>
-                      <div className='window-btns'>
-                        <a className='read-more' href={sightings[claim].url} target='_blank'>Read More</a>
-                        <button className='favorite-btn' onClick={() => favorite(claim)}>Favorite</button>
-                      </div>
-                    </div>
-                  </InfoWindow>
-                )}
-              </Marker>
-    })
+class MapContainer extends Component {
+render() {
+    return (
+      <Map google={this.props.google} zoom={14}>
 
-  return (
-    <div id='map-container'>
-      <GoogleMap
-        defaultZoom={4}
-        defaultCenter={{ lat:39.8282 , lng: -98.5795 }}>
-        {pinsArray}
-      </GoogleMap>
-    </div>
-  )
-})
+        <Marker onClick={this.onMarkerClick}
+                name={'Current location'} />
 
-export default MapContainer
+        <InfoWindow onClose={this.onInfoWindowClose}>
+            <div>
+              <h1>{this.state.selectedPlace.name}</h1>
+            </div>
+        </InfoWindow>
+      </Map>
+    );
+  }
+}
+
+export default GoogleApiWrapper({
+  apiKey: ('AIzaSyB6W6GnRB9fqEkfSS9Zoo3gc71hy-OPNkk')
+})(MapContainer)
