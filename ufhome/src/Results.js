@@ -5,31 +5,31 @@ class Results extends Component {
   render() {
     console.log(this.props.sightings.length)
 
-
-    let locationCityStateResults = uniqWith(this.props.sightings, (sightingA, sightingB) => {
-      // compare lat/long, return true if same, otherwise false
+    // get unique city/state combos and then return sighting summaries unique to the city/state combo
+    let results = uniqWith(this.props.sightings, (sightingA, sightingB) => {
       return sightingA.obj.city === sightingB.obj.city && sightingA.obj.state === sightingB.obj.state;
+    }).map((cityStateData, index) => {
+        let uniqueSightingSummaryList = [];
+        for (var i = 0; i < this.props.sightings.length; i++) {
+          if(this.props.sightings[i].obj.city === cityStateData.obj.city && this.props.sightings[i].obj.state === cityStateData.obj.state){
+            uniqueSightingSummaryList.push(
+              <li>{this.props.sightings[i].obj.summary}</li>
+            );
+          }
+        }
+        return(
+          <div>
+            <h3>
+              <a href={`https://www.airbnb.com/s/${cityStateData.obj.city}--${cityStateData.obj.state}/`} className="airBnBButton" target ='blank'>{cityStateData.obj.city}, {cityStateData.obj.state}</a>
+            </h3>
+            <ul>
+              {uniqueSightingSummaryList}
+            </ul>
+          </div>
+          )
     })
-    .map((sightingData, index) => {
 
-      return(
-        <h3> {sightingData.obj.city}, {sightingData.obj.state}</h3>
-      )
-    });
-
-
-
-    let results = this.props.sightings.map((sightingData, index) => {
-      return(
-        <div key={index}>
-           <h3>
-              <a href={`https://www.airbnb.com/s/${sightingData.obj.city}--${sightingData.obj.state}/`} className="airBnBButton" target ='blank'>{sightingData.obj.city}, {sightingData.obj.state}</a>
-           </h3>
-          <p>{sightingData.obj.date},  <a href={sightingData.obj.url} className="moreInfoButton" target ='blank'>{sightingData.obj.summary}</a></p>
-        </div>
-      )
-    });
-
+    // render
     return (
       <div>
         {results}
