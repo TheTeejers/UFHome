@@ -11,6 +11,7 @@ export class MapSearch extends Component {
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
+      cities: this.props.sightings
     }
 
     // binding this to event-handler functions
@@ -38,14 +39,31 @@ export class MapSearch extends Component {
 
 render() {
 
-  // var uniqueResults = uniqWith(originalArray, comparisonCallbackFunction);
-  // uniqueResults now is items from originalArray, where no other item returns true when called with the comparison func
-
-  let infoWindowData = this.props.sightings.map((sightingData, index) => {
-    return(
-      <p className='infoWindowSummary' key={index}>{sightingData.obj.date}, {sightingData.obj.shape},  <a href={sightingData.obj.url} className="moreInfoButton" target ='blank'>{sightingData.obj.summary}</a> </p>
-    )
-  });
+    // let infoWindowData = uniqWith(this.props.sightings, (sighting) => {
+    //   return this.state.selectedPlace.name === sightingB.obj.city;
+    // }).map((cityStateData, index) => {
+    //     let uniqueSightingSummaryList = [];
+    //     for (var i = 0; i < this.props.sightings.length; i++) {
+    //       if(this.props.sightings[i].obj.city === cityStateData.obj.city && this.props.sightings[i].obj.state === cityStateData.obj.state){
+    //         uniqueSightingSummaryList.push(
+    //           <li key= {i}>
+    //             <h4>A(n) {this.props.sightings[i].obj.shape} was seen on {this.props.sightings[i].obj.date}</h4>
+    //             <ul><li><a href={this.props.sightings[i].obj.url} className="moreInfoButton" target ='new'>{this.props.sightings[i].obj.summary}</a></li></ul>
+    //           </li>
+    //         )
+    //       }
+    //     }
+    //     return(
+    //       <div key ={index}>
+    //         <h3>
+    //           <a href={`https://www.airbnb.com/s/${cityStateData.obj.city}--${cityStateData.obj.state}/`} className="airBnBButton" target ='blank'>{cityStateData.obj.city}, {cityStateData.obj.state}</a>
+    //         </h3>
+    //         <ul key= {index}>
+    //           {uniqueSightingSummaryList}
+    //         </ul>
+    //       </div>
+    //       )
+    // })
 
 
   let markerResults = uniqWith(this.props.sightings, (sightingA, sightingB) => {
@@ -55,9 +73,24 @@ render() {
   .map((sightingData, index) => {
 
     return(
-      <Marker onClick={this.onMarkerClick} name={sightingData.obj.city} position={{lat: sightingData.obj.loc[1], lng: sightingData.obj.loc[0]}} key={index}/>
+      <Marker icon={{url: require('./ufo.png')}} onClick={this.onMarkerClick} name={sightingData.obj.city} position={{lat: sightingData.obj.loc[1], lng: sightingData.obj.loc[0]}} key={index}/>
     )
   });
+    var zoomLevel = 10;
+    if (this.props.sightings.length){
+      zoomLevel = 9
+      };
+
+    var mapCenter = {
+            lat: 33.3943,
+            lng: -104.5230
+    };
+    if (this.props.sightings.length){
+      mapCenter = {
+        lat: this.props.sightings[0].obj.loc[1],
+        lng: this.props.sightings[0].obj.loc[0]
+      };
+    }
 
 
     return (
@@ -65,11 +98,8 @@ render() {
         <Map google={this.props.google}
         style={{width: '75%', height: '75%', position: 'relative'}}
 
-        initialCenter={{
-            lat: 37.0902,
-            lng: -95.7129
-          }}
-        zoom={4}
+        center={mapCenter}
+        zoom={zoomLevel}
         onClick={this.onMapClicked}>
           {markerResults}
 
@@ -77,9 +107,9 @@ render() {
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
             <div className='infoWindowInformation'>
-              <h1>{this.state.selectedPlace.name}  <button>Hello</button></h1>
+              <h3>{this.state.selectedPlace.name}</h3>
 
-              {infoWindowData}
+              {/*{infoWindowData}*/}
             </div>
 
         </InfoWindow>

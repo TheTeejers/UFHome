@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import MapSearch from './MapSearch.js';
 import SearchSightingsApi from './components/results/SearchSightingsApi.js';
 import Results from './Results.js';
-import uniqWith from 'lodash/uniqWith';
 
 class App extends Component {
   constructor(props){
@@ -39,10 +38,16 @@ class App extends Component {
             Get to where THEY were!
           </p>
           <SearchSightingsApi query={this.state.query} handleSearchInput={this.handleSearchInput} onSubmitQuery={this.onSubmitQuery} />
-          <Results sightings={this.state.cities} />
-
         </header>
-        <MapSearch sightings={this.state.cities}/>
+        <div>
+          <div>
+            <MapSearch sightings={this.state.cities}/>
+          </div>
+          <div>
+            <Results sightings={this.state.cities} />
+          </div>
+        </div>
+
 
 
 
