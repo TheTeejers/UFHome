@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 // import './App.css';
 import MapSearch from './MapSearch.js';
-import MapImage from './MapImage.js';
-import Home from './views/Home.js';
-import SearchUfoApi from './components/SearchUfoApi.js';
-import SearchTryToWork from './components/results/SearchTryToWork.js';
+import SearchSightingsApi from './components/results/SearchSightingsApi.js';
 import Results from './Results.js';
+import uniqWith from 'lodash/uniqWith';
 
 class App extends Component {
   constructor(props){
@@ -40,15 +38,12 @@ class App extends Component {
           <p className="siteIntro">
             Get to where THEY were!
           </p>
-          <SearchTryToWork query={this.state.query} handleSearchInput={this.handleSearchInput} onSubmitQuery={this.onSubmitQuery} />
-          {/*<Results sightings={this.state.cities} />*/}
+          <SearchSightingsApi query={this.state.query} handleSearchInput={this.handleSearchInput} onSubmitQuery={this.onSubmitQuery} />
+          <Results sightings={this.state.cities} />
 
         </header>
-        {/*<SearchTryToWork />*/}
-{/*        <Home />
-        <SearchUfoApi />*/}
         <MapSearch sightings={this.state.cities}/>
-        {/*<MapImage />*/}
+
 
 
 

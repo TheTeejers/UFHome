@@ -41,6 +41,13 @@ render() {
   // var uniqueResults = uniqWith(originalArray, comparisonCallbackFunction);
   // uniqueResults now is items from originalArray, where no other item returns true when called with the comparison func
 
+  let infoWindowData = this.props.sightings.map((sightingData, index) => {
+    return(
+      <p className='infoWindowSummary' key={index}>{sightingData.obj.date}, {sightingData.obj.shape},  <a href={sightingData.obj.url} className="moreInfoButton" target ='blank'>{sightingData.obj.summary}</a> </p>
+    )
+  });
+
+
   let markerResults = uniqWith(this.props.sightings, (sightingA, sightingB) => {
     // compare lat/long, return true if same, otherwise false
     return sightingA.obj.loc[1] === sightingB.obj.loc[1] && sightingA.obj.loc[0] === sightingB.obj.loc[0];
@@ -51,28 +58,6 @@ render() {
       <Marker onClick={this.onMarkerClick} name={sightingData.obj.city} position={{lat: sightingData.obj.loc[1], lng: sightingData.obj.loc[0]}} key={index}/>
     )
   });
-
-  let info = this.props.sightings.map((sightingData, index) => {
-    return(
-      <p className='infoWindowSummary'>{sightingData.obj.date}, {sightingData.obj.shape},  {sightingData.obj.summary}</p>
-    )
-  });
-
-  let infoWindowResults = this.props.sightings.map((sightingData, index) => {
-    return(
-      <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow} key={index}>
-            <div className='infoWindowInformation'>
-              <h1>{this.state.selectedPlace.name} <button>Hello</button></h1>
-
-              {info}
-            </div>
-
-        </InfoWindow>
-    )
-  });
-
 
 
     return (
@@ -88,7 +73,16 @@ render() {
         onClick={this.onMapClicked}>
           {markerResults}
 
-          {infoWindowResults}
+      <InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}>
+            <div className='infoWindowInformation'>
+              <h1>{this.state.selectedPlace.name}  <button>Hello</button></h1>
+
+              {infoWindowData}
+            </div>
+
+        </InfoWindow>
         </Map>
       </div>
     );

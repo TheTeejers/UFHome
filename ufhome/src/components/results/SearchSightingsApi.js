@@ -6,7 +6,7 @@ class SearchSightingsApi extends Component {
     super(props);
     this.state = {
       searchCity: '',
-      searchingSkies: true
+      searchingSkies: false
     }
 
     this.getSearch = this.getSearch.bind(this);
@@ -23,7 +23,7 @@ class SearchSightingsApi extends Component {
       console.log('I SHOULD HAVE SEARCH RESULTS');
       // console.log(response.data);
       // console.log(response.data.sightings);
-      if (response.data.status == 'ERROR') {
+      if (response.data.status === 'ERROR') {
         alert('Error in fetching data for the location')
       } else {
         let newSighting = response.data.sightings
@@ -31,6 +31,7 @@ class SearchSightingsApi extends Component {
           searchCity: newSighting,
           searchingSkies: false
         })
+        console.log(newSighting)
         // call App function to update App state of search results
         this.props.onSubmitQuery(newSighting);
       }
@@ -44,20 +45,8 @@ class SearchSightingsApi extends Component {
     this.getSearch();
   }
 
-  formatCity(sightings) {
-    var cities = '';
-    for (let i of sightings.city){
-      cities += i.city;
-  }
 
-  }
   render() {
-    var sightings = this.state.getSearch;
-    var sightingResults = '';
-    if (sightings) {
-      sightingResults = this.formatCity(sightings);
-    }
-
     return (
       <div className='searchReturn'>
         <h1>{this.state.searchingSkies ? 'Looking at the stars....' : 'HELLO!!!'}</h1>
@@ -68,9 +57,6 @@ class SearchSightingsApi extends Component {
               onKeyDown={(event) => {if(event.keyCode === 13) this.getSearch()}}/>
           <button>Search the Skies Now!</button>
         </form>
-        <div>
-          <p>{sightingResults}words</p>
-        </div>
       </div>
     )
   }
