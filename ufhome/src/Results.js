@@ -14,19 +14,18 @@ class Results extends Component {
         let uniqueSightingSummaryList = [];
         for (var i = 0; i < this.props.sightings.length; i++) {
           if(this.props.sightings[i].obj.city === cityStateData.obj.city && this.props.sightings[i].obj.state === cityStateData.obj.state){
+            var sightingDisplayDate = new Date(this.props.sightings[i].obj.date);
+            sightingDisplayDate = sightingDisplayDate.toDateString('MM-DD-YYYY');
             uniqueSightingSummaryList.push(
               <li key= {i}>
-              //trying to get count of sightings per location
-              {this.props.sightings[i].obj.summary.length}
-                <h4>A(n) {this.props.sightings[i].obj.shape} was seen on {this.props.sightings[i].obj.date}</h4>
                 <ul>
+                  <h3>Sighting number {i}</h3>
+                  <li className='listDate'>Date Object was Sighted: {sightingDisplayDate}</li>
+                  <li className='listShape'>Shape of Object: {this.props.sightings[i].obj.shape}</li>
                   <li>
                     <a href={this.props.sightings[i].obj.url} className="moreInfoLink" target ='popup' >
-
                       {this.props.sightings[i].obj.summary}
                     </a>
-
-
                   </li>
                 </ul>
               </li>
