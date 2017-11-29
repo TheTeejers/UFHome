@@ -73,7 +73,7 @@ render() {
   .map((sightingData, index) => {
 
     return(
-      <Marker icon={{url: require('./ufo.png')}} onClick={this.onMarkerClick} name={sightingData.obj.city} position={{lat: sightingData.obj.loc[1], lng: sightingData.obj.loc[0]}} key={index}/>
+      <Marker icon={{url: require('../images/ufo.png')}} onClick={this.onMarkerClick} name={sightingData.obj.city} position={{lat: sightingData.obj.loc[1], lng: sightingData.obj.loc[0]}} key={index}/>
     )
   });
     var zoomLevel = 10;
@@ -92,11 +92,10 @@ render() {
       };
     }
 
-
     return (
       <div className="map">
         <Map google={this.props.google}
-        style={{width: '75%', height: '75%', position: 'relative'}}
+
 
         center={mapCenter}
         zoom={zoomLevel}
@@ -107,7 +106,7 @@ render() {
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
             <div className='infoWindowInformation'>
-              <h3>{this.state.selectedPlace.name}</h3>
+              <h3>They were seen in {this.state.selectedPlace.name}!</h3>
 
               {/*{infoWindowData}*/}
             </div>

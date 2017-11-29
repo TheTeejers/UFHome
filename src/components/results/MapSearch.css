@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Audiowide|Geostar+Fill|Londrina+Outline|Press+Start+2P|VT323');
+
+
+/*font-family: 'Audiowide', cursive;
+font-family: 'VT323', monospace;
+font-family: 'Press Start 2P', cursive;
+font-family: 'Geostar Fill', cursive;
+font-family: 'Londrina Outline', cursive;*/
+
+.map {
+  width: 50vw;
+  height: 50vh;
+  position: relative;
+  overflow: hidden;
+  border:solid black 1px;
+  border-radius: 10px;
+}
+
+.infoWindowInformation {
+  font-family: 'Press Start 2P', cursive;
+}

@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css?family=Audiowide|Geostar+Fill|Londrina+Outline|Press+Start+2P|VT323');
+
+
+/*font-family: 'Audiowide', cursive;
+font-family: 'VT323', monospace;
+font-family: 'Press Start 2P', cursive;
+font-family: 'Geostar Fill', cursive;
+font-family: 'Londrina Outline', cursive;*/
+
+.resultListCityStateName {
+  text-decoration: none;
+  font-family: 'VT323', monospace;
+  font-size: 55px;
+  margin: 0px;
+  border-bottom: 2px solid black;
+}
+
+.listDate, .listShape, .resultsListDetailsSummary {
+  font-family: 'VT323', monospace;
+  margin: 0px;
+
+}
+
+.listDate, .listShape{
+  font-size: 25px;
+
+}
+
+.resultsListDetailsSummary {
+  font-size: 30px;
+}
+
+
+.resultsListDetails{
+  border: 2px solid gray;
+  border-radius: 10px;
+}
+
+
+
+
+.resultsDisplayContainer {
+
+}
+
+.resultsHeader {
+  font-family: 'Geostar Fill', cursive;
+  width: 100vw;
+  text-align: center;
+}
+
+.moreInfoLink {
+  text-decoration: none;
+  color: gray;
+}
+ a {
+  text-decoration: none;
+ }
+
+a:hover   {
+  background-color: lightblue;
+  color: black;
+  }
+
+a:visited {
+  /* Applies to all visited links */
+  text-decoration:  none;
+  font-weight: bold;
+  background-color: #ddd;
+  color: darkgreen;
+  }
+
+/*  .target[i] {
+    width:50vw;
+    height:auto;
+    border:solid black 1px;
+}
+.target > div {
+    display:none;
+}
+
+.target > div:target{
+    display:block;
+    overflow-y: scroll;
+}*/
