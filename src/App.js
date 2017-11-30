@@ -43,7 +43,7 @@ class App extends Component {
               <input className='searchButton' type="submit" value='Let the Search Begin!' />
             </form>
             <form action='./About'>
-              <input className='searchButton' type="submit" value='Home Planet' />
+              <input className='searchButton' type="submit" value='About' />
             </form>
           </div>
         <Router>
