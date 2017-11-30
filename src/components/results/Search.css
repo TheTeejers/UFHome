@@ -28,7 +28,7 @@ font-family: 'Londrina Outline', cursive;*/
   overflow-y: scroll;
   border-radius: 10px;
   border:solid 1px black;
-  background-color: white;
+  background: url('../images/stars.gif');
   text-align: center;
 }
 

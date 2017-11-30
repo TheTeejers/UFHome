@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
 import Home from './components/Home.js';
+import About from './components/About.js';
 import ufo from './components/images/ufo.png';
 import Search from './components/results/Search.js';
 import './App.css';
@@ -41,7 +42,7 @@ class App extends Component {
             <form action='./Search'>
               <input className='searchButton' type="submit" value='Let the Search Begin!' />
             </form>
-            <form action='./Home'>
+            <form action='./About'>
               <input className='searchButton' type="submit" value='Home Planet' />
             </form>
           </div>
@@ -49,6 +50,7 @@ class App extends Component {
           <div className='Home'>
             <Route exact path='/' component={ () => <Home /> } />
             <Route path='/Home' component={ () => <Home /> } />
+            <Route path='/About' component={ () => <About /> } />
             <Route path='/Search' component={ () => <Search /> } />
           </div>
 

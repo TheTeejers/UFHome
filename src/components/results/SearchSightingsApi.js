@@ -24,7 +24,7 @@ class SearchSightingsApi extends Component {
     var meters = miles / 0.00062137;
     console.log("meters:", meters);
     console.log("miles:", miles);
-    axios.get(`https://cors-anywhere.herokuapp.com/https://ufo-api.herokuapp.com/api/sightings/location/near?limit=50&location=${this.refs.locationseed.value}&radius=${meters || 250000}`)
+    axios.get(`https://cors-anywhere.herokuapp.com/https://ufo-api.herokuapp.com/api/sightings/location/near?limit=150&location=${this.refs.locationseed.value}&radius=${meters || 250000}`)
     .then((response) => {
       console.log('I SHOULD HAVE SEARCH RESULTS');
       // console.log(response.data);
@@ -55,7 +55,7 @@ class SearchSightingsApi extends Component {
   render() {
     return (
       <div className='searchReturn'>
-        <h1 className='searchWaitingText' >{this.state.searchingSkies ? 'Looking at the stars...' : 'HELLO!!!'}</h1>
+        <h1 className='searchWaitingText' >{this.state.searchingSkies ? 'Searching...' : 'HELLO!!!'}</h1>
         <form onSubmit={this.handleSubmit}>
           <input className='inputText' type='text' placeholder='City and State' ref='locationseed'
               onKeyDown={(event) => {if(event.keyCode === 13) this.handleSubmit(event)}}/>

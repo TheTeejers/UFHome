@@ -26,6 +26,7 @@
 .resultsListDetails{
   border: 2px solid gray;
   border-radius: 10px;
+  background-color: white;
 }
 
 .resultsHeader {
@@ -40,7 +41,7 @@
 }
  a {
   text-decoration: none;
-  color: darkblue;
+  color: white;
  }
 
 a:hover   {
@@ -51,7 +52,6 @@ a:visited {
   text-decoration:  none;
   font-weight: bold;
   background-color: #ddd;
-  color: blue;
   }
 
 
