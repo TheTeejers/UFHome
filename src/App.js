@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import MapSearch from './components/results/MapSearch.js';
-import SearchSightingsApi from './components/results/SearchSightingsApi.js';
-import Results from './components/results/Results.js';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
+import Home from './components/Home.js';
 import ufo from './components/images/ufo.png';
+import Search from './components/results/Search.js';
 import './App.css';
 
 
@@ -37,18 +37,23 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <div className='resultsDisplayContainer'>
-          <div className='mapSearchContanier'>
-            <MapSearch sightings={this.state.cities}/>
-            <SearchSightingsApi query={this.state.query} handleSearchInput={this.handleSearchInput} onSubmitQuery={this.onSubmitQuery} />
+          <div className='buttonLayout'>
+            <form action='./Search'>
+              <input className='searchButton' type="submit" value='Let the Search Begin!' />
+            </form>
+            <form action='./Home'>
+              <input className='searchButton' type="submit" value='Home Planet' />
+            </form>
           </div>
-          <div className='resultsListContainer'>
-            <Results sightings={this.state.cities} />
+        <Router>
+          <div className='Home'>
+            <Route exact path='/' component={ () => <Home /> } />
+            <Route path='/Home' component={ () => <Home /> } />
+            <Route path='/Search' component={ () => <Search /> } />
           </div>
-        </div>
-        <div>
-          <Footer />
-        </div>
+
+        </Router>
+        <Footer />
       </div>
     );
   }

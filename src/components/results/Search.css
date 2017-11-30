@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Audiowide|Geostar+Fill|Londrina+Outline|Press+Start+2P|VT323');
+
+/*font-family: 'Audiowide', cursive;
+font-family: 'VT323', monospace;
+font-family: 'Press Start 2P', cursive;
+font-family: 'Geostar Fill', cursive;
+font-family: 'Londrina Outline', cursive;*/
+
+.Home {
+  text-align: center;
+  height: 100%;
+}
+
+.resultsDisplayContainer {
+  display: inline-flex;
+  flex-direction: column;
+  margin-top: 50px 50px 0 50px;
+}
+
+.mapSearchContanier {
+  display: inline-flex;
+  max-height: 30vh;
+}
+
+.resultsListContainer {
+  max-height: 40vh;
+  margin:0 25px 1px 25px;
+  overflow-y: scroll;
+  border-radius: 10px;
+  border:solid 1px black;
+  background-color: white;
+  text-align: center;
+}
+
+.ufo-logo-left {
+  animation: ufo-logo-spin-left infinite 2s alternate;
+  height: 80px;
+  margin-right: 50px;
+  filter: drop-shadow(0px 0px 1rem teal);
+}
+
+
