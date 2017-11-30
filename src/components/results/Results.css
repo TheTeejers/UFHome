@@ -11,12 +11,10 @@
 .listDate, .listShape, .resultsListDetailsSummary {
   font-family: 'VT323', monospace;
   margin: 0px;
-
 }
 
 .listDate, .listShape{
   font-size: 25px;
-
 }
 
 .resultsListDetailsSummary {
@@ -39,6 +37,7 @@
   text-decoration: none;
   color: gray;
 }
+
  a {
   text-decoration: none;
   color: white;

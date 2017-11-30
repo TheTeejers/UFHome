@@ -1,13 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Audiowide|Geostar+Fill|Londrina+Outline|Press+Start+2P|VT323');
 
-
-/*font-family: 'Audiowide', cursive;
-font-family: 'VT323', monospace;
-font-family: 'Press Start 2P', cursive;
-font-family: 'Geostar Fill', cursive;
-font-family: 'Londrina Outline', cursive;*/
-
-
 .searchWaitingText {
   font-family: 'Press Start 2P', cursive;
   height: 50px;
@@ -21,12 +13,12 @@ font-family: 'Londrina Outline', cursive;*/
 .searchReturn {
   margin: 25px;
 }
+
 .searchButton, .inputText{
   font-family: 'Press Start 2P', cursive;
   box-shadow: 1px 1px 3px gray, 0 0 1rem blue, 0 0 .4em red;
   font-size: 14px;
 }
-
 
 .searchButton {
   margin: 25px;
@@ -44,11 +36,13 @@ font-family: 'Londrina Outline', cursive;*/
   text-decoration: none;
   vertical-align: middle;
 }
+
 .searchButton:hover {
   border-top-color: #0510e6;
   background: #0510e6;
   color: #ff0004;
 }
+
 .searchButton:active {
   border-top-color: #1b1e5c;
   background: #1b1e5c;

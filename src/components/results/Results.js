@@ -6,8 +6,6 @@ class Results extends Component {
   render() {
     console.log(this.props.sightings.length)
 
-
-
     // get unique city/state combos and then return sighting summaries unique to the city/state combo
     let results = uniqWith(this.props.sightings, (sightingA, sightingB) => {
       return sightingA.obj.city === sightingB.obj.city && sightingA.obj.state === sightingB.obj.state;

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './SearchSightingsApi.css';
 
-
 class SearchSightingsApi extends Component {
   constructor(props) {
     super(props);
@@ -27,8 +26,6 @@ class SearchSightingsApi extends Component {
     axios.get(`https://cors-anywhere.herokuapp.com/https://ufo-api.herokuapp.com/api/sightings/location/near?limit=150&location=${this.refs.locationseed.value}&radius=${meters || 250000}`)
     .then((response) => {
       console.log('I SHOULD HAVE SEARCH RESULTS');
-      // console.log(response.data);
-      // console.log(response.data.sightings);
       if (response.data.status === 'ERROR') {
         alert('Error in fetching data for the location')
       } else {
@@ -38,7 +35,6 @@ class SearchSightingsApi extends Component {
           searchingSkies: false
         })
         console.log(newSighting)
-        // call App function to update App state of search results
         this.props.onSubmitQuery(newSighting);
       }
     }).catch((error) => {
@@ -50,7 +46,6 @@ class SearchSightingsApi extends Component {
     event.preventDefault();
     this.getSearch();
   }
-
 
   render() {
     return (
@@ -66,7 +61,6 @@ class SearchSightingsApi extends Component {
       </div>
     )
   }
-
 }
 
 export default SearchSightingsApi
