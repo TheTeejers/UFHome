@@ -14,7 +14,7 @@ class Header extends Component {
             <a className='homeLink' href='./'>
               UFHome
             </a>
-            <a href='http://www.agame.com/game/saucer-destruction-3-armageddon' target='new' >
+            <a href='https://www.youtube.com/watch?v=0qGTjIcVDAU' target='new' >
               <img src={ufo} className='ufo-logo-right' alt='bouncing ufo'/>
             </a>
           </h1>
