@@ -43,7 +43,7 @@ class App extends Component {
               <input className='searchButton' type="submit" value='Let the Search Begin!' />
             </form>
             <form action='./About'>
-              <input className='searchButton' type="submit" value='About' />
+                          <input className='searchButton' type="submit" value='About' />
             </form>
           </div>
         <Router>
@@ -53,7 +53,6 @@ class App extends Component {
             <Route path='/About' component={ () => <About /> } />
             <Route path='/Search' component={ () => <Search /> } />
           </div>
-
         </Router>
         <Footer />
       </div>

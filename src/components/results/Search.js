@@ -7,13 +7,11 @@ import Footer from '../Footer.js';
 import ufo from '../images/ufo.png';
 import './Search.css';
 
-
 class Search extends Component {
   constructor(props){
     super(props);
     this.handleSearchInput = this.handleSearchInput.bind(this);
     this.onSubmitQuery = this.onSubmitQuery.bind(this);
-
     this.state = {
       cities: [],
       query: ''
