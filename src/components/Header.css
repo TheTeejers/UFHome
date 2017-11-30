@@ -1,0 +1,46 @@
+.App-header {
+  text-align: center;
+}
+
+.siteTitle {
+  font-family: 'Audiowide', cursive;
+  font-size: 90px;
+  margin-bottom: 0px;
+  text-shadow:
+    1px 1px 3px gray,
+    10px -10px 50px blue,
+    -10px 10px 20px red;
+  color: white;
+}
+
+.siteIntro {
+  font-family: 'Audiowide', cursive;
+  font-size: 35px;
+  margin-top: 0px;
+  color: white;
+  text-shadow:
+  1px 1px 3px gray,
+  6px -6px 25px blue,
+  -6px 6px 10px red;
+}
+
+.homeLink {
+  color: white;
+}
+
+.ufo-logo-right {
+  animation: ufo-logo-spin-right infinite 2s alternate;
+  height: 80px;
+  margin-left: 50px;
+  filter: drop-shadow(0px 0px 1rem teal);
+}
+
+@keyframes ufo-logo-spin-left {
+  from { transform: rotate(-45deg); }
+  to { transform: rotate(45deg); }
+}
+
+@keyframes ufo-logo-spin-right {
+  from { transform: rotate(45deg); }
+  to { transform: rotate(-45deg); }
+}

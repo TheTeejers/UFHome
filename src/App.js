@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import MapSearch from './components/results/MapSearch.js';
-import SearchSightingsApi from './components/results/SearchSightingsApi.js';
-import Results from './components/results/Results.js';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Header from './components/Header.js';
+import Footer from './components/Footer.js';
+import Home from './components/Home.js';
+import About from './components/About.js';
 import ufo from './components/images/ufo.png';
+import Search from './components/results/Search.js';
 import './App.css';
 
 
@@ -34,32 +37,25 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="siteTitle"><img src={ufo} className='ufo-logo-left'/>UFHome<img src={ufo} className='ufo-logo-right'/></h1>
-          <p className="siteIntro">
-            Get to where THEY were!
-          </p>
-        </header>
-
-        <div className='resultsDisplayContainer'>
-          <div className='mapSearchContanier'>
-            <div className='mapResultsContainer'>
-              <MapSearch sightings={this.state.cities}/>
-            </div>
-            <div>
-              <SearchSightingsApi query={this.state.query} handleSearchInput={this.handleSearchInput} onSubmitQuery={this.onSubmitQuery} />
-            </div>
+        <Header />
+          <div className='buttonLayout'>
+            <form action='./Search'>
+              <input className='searchButton' type="submit" value='Let the Search Begin!' />
+            </form>
+            <form action='./About'>
+              <input className='searchButton' type="submit" value='Home Planet' />
+            </form>
           </div>
-          <div className='resultsListContainer'>
-            <Results sightings={this.state.cities} />
+        <Router>
+          <div className='Home'>
+            <Route exact path='/' component={ () => <Home /> } />
+            <Route path='/Home' component={ () => <Home /> } />
+            <Route path='/About' component={ () => <About /> } />
+            <Route path='/Search' component={ () => <Search /> } />
           </div>
-        </div>
 
-
-
-
-
-
+        </Router>
+        <Footer />
       </div>
     );
   }

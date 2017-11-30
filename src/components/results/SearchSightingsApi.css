@@ -24,6 +24,7 @@ font-family: 'Londrina Outline', cursive;*/
 .searchButton, .inputText{
   font-family: 'Press Start 2P', cursive;
   box-shadow: 1px 1px 3px gray, 0 0 1rem blue, 0 0 .4em red;
+  font-size: 14px;
 }
 
 
