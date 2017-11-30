@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './SearchSightingsApi.css';
-import satlooking from '../images/satlooking.gif';
 
 
 class SearchSightingsApi extends Component {

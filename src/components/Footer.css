@@ -1,0 +1,16 @@
+.footerContainer {
+  height: 50px;
+  color: white;
+  position: relative;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 1rem;
+  padding: 1rem;
+  text-align: center;
+  margin-top: 5px;
+}
+
+p {
+  margin: 0;
+}
