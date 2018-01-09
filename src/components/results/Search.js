@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import MapSearch from '../results/MapSearch.js';
 import SearchSightingsApi from '../results/SearchSightingsApi.js';
 import Results from '../results/Results.js';
-import Header from '../Header.js';
-import Footer from '../Footer.js';
-import ufo from '../images/ufo.png';
+// import Header from '../Header.js';
+// import Footer from '../Footer.js';
+// import ufo from '../images/ufo.png';
 import './Search.css';
 
 class Search extends Component {

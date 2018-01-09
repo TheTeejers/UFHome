@@ -53,4 +53,9 @@ a:visited {
   background-color: #ddd;
   }
 
+@media (max-width: 1080px){
+  .resultsWindow {
+    overflow: hidden;
 
+  }
+}
