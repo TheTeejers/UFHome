@@ -21,3 +21,9 @@
 .mapResultsContainer{
   max-height: 30vh;
 }
+
+@media (max-width: 1080px){
+  .map {
+    width: 95vw;
+  }
+}
