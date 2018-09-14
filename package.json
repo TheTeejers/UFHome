@@ -2,8 +2,10 @@
   "name": "ufhome",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://theteejers.github.io/UFHome/",
   "dependencies": {
     "axios": "^0.17.1",
+    "gh-pages": "^1.2.0",
     "google-maps-react": "^1.1.2",
     "lodash": "^4.17.4",
     "react": "^16.1.1",
@@ -17,6 +19,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   }
 }
