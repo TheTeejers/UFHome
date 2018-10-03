@@ -14,7 +14,6 @@ class App extends Component {
     super(props);
     this.handleSearchInput = this.handleSearchInput.bind(this);
     this.onSubmitQuery = this.onSubmitQuery.bind(this);
-
     this.state = {
       cities: [],
       query: ''
@@ -39,14 +38,14 @@ class App extends Component {
       <div className="App">
         <Header />
           <div className='buttonLayout'>
-            <form action='./Search'>
+            <form action='/Search'>
               <input className='searchButton' type="submit" value='Let the Search Begin!' />
             </form>
             <form action='./About'>
                           <input className='searchButton' type="submit" value='About' />
             </form>
           </div>
-        <Router>
+        <Router basename = {process.env.PUBLIC_URL}>
           <div className='Home'>
             <Route exact path='/' component={ () => <Home /> } />
             <Route path='/Home' component={ () => <Home /> } />
